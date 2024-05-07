@@ -1,0 +1,17 @@
+/* Apply flex layout to the root component */
+.app-root {
+    display: flex;
+    flex-direction: column; /* Vertical layout */
+    min-height: 100vh; /* Ensure the layout fills the viewport */
+  }
+  
+  /* Make the main content area flexible */
+  router-outlet {
+    flex: 1; /* This allows the content area to expand */
+  }
+  
+  /* Keep the footer at the bottom */
+  app-footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
+  }
+  

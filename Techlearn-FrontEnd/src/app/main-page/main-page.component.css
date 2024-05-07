@@ -1,0 +1,436 @@
+
+.moving{
+    width: 0ch;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: text 3s steps(30) infinite  alternate;
+    border-right: 3px solid black;
+}
+@keyframes text{
+    0%{
+        width: 0ch;
+    }   
+    50%{
+        width:22ch;
+    }
+}
+
+.card {
+    box-sizing: border-box;
+    width: 254px;
+    height: 254px;
+    /* background: rgba(217, 217, 217, 0.58); */
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+  }
+  
+  .card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  
+  .card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+
+  .think {
+    box-sizing: border-box;
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+  }
+  
+  .think:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+  }
+  
+  .think:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  .think img {
+    width: 100%;
+    height: 100%; /* Ensures image fills the entire div */
+    object-fit: cover; /* Scales the image to cover the entire space */
+    border-radius: 17px; /* Match the border-radius of the parent div */
+  }
+
+  .justified-text {
+    text-align: justify; /* Justifies text */
+    text-justify: inter-word; /* Optional: Adjusts justification behavior */
+  }
+
+  p{
+    font-size: 20px;
+  }
+
+
+  .buttonGo {
+  padding: 15px 30px 15px 50px;
+  background: #181c35;
+  border-radius: 30px;
+  display: flex;
+  position: relative;
+  color: #fff;
+  font-weight: 400;
+  overflow: hidden;
+  transition: all ease-in-out .5s;
+  border: #ffffff56 solid 1px;
+  box-shadow: #51eafd 0px 0px 50px -15px;
+}
+
+.buttonGo:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -90%;
+  left: -90%;
+  filter: blur(20px);
+  background: #a11ee3;
+}
+
+.buttonGo:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: -90%;
+  right: -90%;
+  filter: blur(20px);
+  background: #51eafd;
+}
+
+.buttonGo .icon {
+  transform: scale(0.07);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 14px;
+  top: 2px;
+  transition: all ease-in-out .5s;
+  z-index: 9;
+  rotate: 45deg
+}
+
+.buttonGo .icon path {
+  fill: #fff;
+}
+
+.buttonGo .launch {
+  background: fff;
+  background: #fff;
+  width: 300px;
+  height: 300px;
+  rotate: 45deg;
+  position: absolute;
+  left: -9px;
+  top: 550%;
+  z-index: 0;
+  transform: translateX(-56%);
+  transition: all ease-in-out 1s;
+}
+
+.buttonGo .text {
+  z-index: 9;
+  transition: all ease-in-out .3s;
+}
+
+.buttonGo:hover .icon {
+  transform: scale(0.07);
+  animation: shake_341 2s infinite;
+  top: 5px;
+  left: 8px;
+  rotate: 0deg;
+}
+
+.buttonGo:active {
+  transform: scale(0.7);
+}
+
+.buttonGo:hover {
+  box-shadow: 0px 0px 0px 10px #00000017;
+}
+
+.buttonGo:focus {
+  color: #464646;
+}
+
+.buttonGo:focus .icon {
+  transform: scale(0.07);
+  animation: launch_341 2s alternate;
+}
+
+.buttonGo:focus .icon path {
+  animation: fill_341 2s linear;
+  animation-fill-mode: forwards;
+}
+
+.buttonGo:focus .launch {
+  top: -90%;
+}
+
+@keyframes shake_341 {
+  10%, 90% {
+    transform: scale(0.07) translate3d(-6px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: scale(0.07)  translate3d(7px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: scale(0.07)  translate3d(-9px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: scale(0.07)  translate3d(9px, 0, 0);
+  }
+}
+
+@keyframes launch_341 {
+  0% {
+    top: 0px;
+    opacity: 1;
+  }
+
+  20% {
+    top: -100%;
+    opacity: 1;
+  }
+
+  20.5% {
+    opacity: 0;
+  }
+
+  24% {
+    opacity: 0;
+    top: 100%;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 6px;
+  }
+}
+
+@keyframes fill_341 {
+  0% {
+    fill: #fff;
+  }
+
+  20% {
+    fill: #fff;
+  }
+
+  20.5% {
+    opacity: 0;
+  }
+
+  100% {
+    fill: #464646;
+  }
+}
+
+.card {
+  width: 280px;
+  height: 280px;
+  background: white;
+  border-radius: 32px;
+  padding: 3px;
+  position: relative;
+  box-shadow: #604b4a30 0px 70px 30px -50px;
+  transition: all 0.5s ease-in-out;
+}
+
+.card .mail {
+  position: absolute;
+  right: 2rem;
+  top: 1.4rem;
+  background: transparent;
+  border: none;
+}
+
+.card .mail svg {
+  stroke: rgb(16, 158, 146);
+  stroke-width: 3px;
+}
+
+.card .mail svg:hover {
+  stroke: rgb(16, 158, 146);
+}
+
+.card .profile-pic {
+  position: absolute;
+  width: calc(90% - 6px);
+  height: calc(90% - 6px);
+  top: 3px;
+  left: 3px;
+  border-radius: 29px;
+  z-index: 1;
+  border: 0px solid rgb(16, 158, 146);
+  overflow: hidden;
+  transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
+}
+
+.card .profile-pic img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  -o-object-position: 0px 0px;
+  object-position: 0px 0px;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.card .profile-pic svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: 0px 0px;
+  object-position: 0px 0px;   
+  transform-origin: 45% 20%;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+.card .bottom {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  background: rgb(16, 158, 146);
+  top: 80%;
+  border-radius: 29px;
+  z-index: 2;
+  box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px inset;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.card .bottom .content {
+  position: absolute;
+  bottom: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 160px;
+}
+
+.card .bottom .content .name {
+  display: block;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.card .bottom .content .about-me {
+  display: block;
+  font-size: 0.9rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.card .bottom .bottom-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .bottom .bottom-bottom .social-links-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.card .bottom .bottom-bottom .social-links-container svg {
+  height: 20px;
+  fill: white;
+  filter: drop-shadow(0 5px 5px rgba(165, 132, 130, 0.1333333333));
+}
+
+.card .bottom .bottom-bottom .social-links-container svg:hover {
+  fill: rgb(12, 200, 184);
+  transform: scale(1.2);
+}
+
+.card .bottom .bottom-bottom .button {
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  box-shadow: rgba(165, 132, 130, 0.1333333333) 0px 5px 5px 0px;
+}
+
+.card .bottom .bottom-bottom .button:hover {
+  background: rgb(3, 212, 195);
+  color: white;
+}
+
+.card:hover {
+  border-top-left-radius: 55px;
+}
+
+.card:hover .bottom {
+  top: 20%;
+  border-radius: 80px 29px 29px 29px;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s;
+}
+
+.card:hover .profile-pic {
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  z-index: 3;
+  border: 7px solid rgb(16, 158, 146);
+  box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px;
+  transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
+}
+
+.card:hover .profile-pic:hover {
+  transform: scale(1.3);
+  border-radius: 0px;
+}
+
+.card:hover .profile-pic img {
+  transform: scale(2.5);
+  -o-object-position: 0px 25px;
+  object-position: 0px 25px;
+  transition: all 0.5s ease-in-out 0.5s;
+}
+
+.card:hover .profile-pic svg {
+  transform: scale(2.5);
+  transition: all 0.5s ease-in-out 0.5s;
+}

@@ -1,0 +1,24 @@
+<div class="container">
+  <header
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <div class="col-md-3 mb-2 mb-md-0">
+      <a href="/"><img class="logo" src="assets\logo.png"></a>
+    </div>
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a routerLink="/dashboard" class="nav-link px-2"><span class="material-icons" *ngIf="isLoggedIn">account_circle</span></a>
+        </li>
+        <li><a routerLink="/" (click)="logout()" class="nav-link px-2"><span class="material-icons" *ngIf="isLoggedIn" >logout</span></a></li>
+      </ul>
+    </ul>
+    <div class="col-md-3 text-end" *ngIf="!isLoggedIn">
+      <button routerLink="/login">
+        <span>LOGIN</span>
+      </button>
+
+      <button routerLink="/signup">
+        <span>SIGN-UP</span>
+      </button>
+    </div>
+  </header>
+</div>

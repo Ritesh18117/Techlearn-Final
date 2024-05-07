@@ -1,0 +1,33 @@
+<div class="container border form-div">
+    <div class="wrapper">
+            <div class="form-headline">
+                
+                <h2>Welcome</h2>
+            <h4 >Create your account</h4>
+            </div>      
+                <form id="submit-form" (ngSubmit)="submit()">
+                    <p class="full-width">
+                        <input type="password" id="email" [(ngModel)]="user.email" name="email" class="form-input" type="email" placeholder="Your Email*" >
+                        <small class="name-error"></small>
+                    </p>
+                    <p class="full-width">
+                        <input id="passowrd" name="password" [(ngModel)]="user.password" class="form-input" type="password" placeholder="Password*" required>
+                        <small></small>
+                    </p>
+                    <p class="full-width">
+                        <input  id="confirm-password" [(ngModel)]="user.confirmPassword" name="confirmPassword" class="form-input" type="password" placeholder="Confirm Password*" required>
+                        <small></small>
+                    </p>
+                    <p class="full-width">
+                        <input type="checkbox" id="checkbox" name="checkbox" checked> Yes, I would like to receive
+                        communications by call / email about TechLearn's services.
+                    </p>
+                    <p class="full-width">
+                        <!-- <input type="submit" class="submit-btn" value="Submit" onclick="checkValidations()"> -->
+                        <button class="submit-btn" type="submit">Submit</button>
+                        <!-- <button class="reset-btn" onclick="reset()">Reset</button> -->
+                    </p>
+                </form>
+            </div>
+        </div>
+    

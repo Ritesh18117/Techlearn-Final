@@ -66,26 +66,33 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
 });
 
 // Get a specific user by ID (JWT-protected)
-router.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.get('/profile', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.user._id);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.json(user);
+    const sendUser = user;
+    // sendUser.password = "";
+    res.json(sendUser);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
 
 // Update a user's information (JWT-protected, only by the user)
-router.put('/:id', [passport.authenticate('jwt', { session: false }), ensureOwnProfile], async (req, res) => {
+router.put('/profile', [passport.authenticate('jwt', { session: false })], async (req, res) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedUser) {
-      return res.status(404).json({ message: 'User not found' });
+    if(req.user._id){
+      const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, { new: true });
+      if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.json(updatedUser);
+    } 
+    else{
+      res.status(403).json({ message: "You are not authorized to edit this profile." }); // Not authorized
     }
-    res.json(updatedUser);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }

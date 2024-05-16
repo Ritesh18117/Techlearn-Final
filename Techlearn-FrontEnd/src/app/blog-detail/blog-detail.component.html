@@ -1,0 +1,10 @@
+<div class="container">
+    <h1 class="text-center my-3">{{ blog.title }}</h1>
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid border" [src]="blog.image" alt="Blog Image">
+    </div>
+    <div class="my-5 text-justify" [innerHTML]="blog.content"></div>
+    <div class="author m-5">
+        ~ {{ blog.author.name }}
+    </div>
+</div>

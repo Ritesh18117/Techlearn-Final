@@ -1,0 +1,24 @@
+<h2 class="border-bottom p-3">Add Blog</h2>
+<form [formGroup]="textForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label form-control-lg">Blog Title</label>
+        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput2" placeholder="Title" formControlName="title">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label form-control-lg">Add Image URL</label>
+        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="http://example.com/image.jpg" formControlName="image">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label form-control-lg">Write Blog</label>
+        <textarea formControlName="content" class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="12"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary m-3">Submit</button>
+</form>
+
+<!-- Display Submitted Content and Image URL -->
+<!-- <div *ngIf="submittedContent">
+  <h3 class="mt-5">Submitted Content</h3>
+  <img [src]="submittedImageUrl" alt="" srcset="">
+  <p>Blog Content:</p>
+  <pre>{{ submittedContent }}</pre>
+</div> -->

@@ -53,4 +53,16 @@
     color: black;
     line-height: 1.4;
   }
+
+  img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 300px;
+  }
   
+  i:hover{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+  }

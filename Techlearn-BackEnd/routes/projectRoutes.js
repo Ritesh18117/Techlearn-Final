@@ -1,16 +1,27 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Project = require('../Models/Porjects');
 const passport = require('passport'); // Ensure JWT-based authentication
 const ensureAuthor = require("../Middleware/ensureAuthor");
 
 // Get all projects
-router.get('/', async (req, res) => {
+router.get('/getAll', async (req, res) => {
     try {
         const projects = await Project.find().populate('owner'); // Populate owner details
         res.json(projects); // Return all projects
     } catch (err) {
         res.status(500).json({ message: 'Server error', error: err.message });
+    }
+});
+
+router.get("/getAllMyProject", passport.authenticate('jwt', {session: false}), async (req, res) => {
+    try {
+      const userId = req.user._id; // Accessing the user ID from the JWT payload
+      const projects = await Project.find({ owner: new mongoose.Types.ObjectId(userId) }); // Correctly referencing the ObjectId
+      res.json(projects); // Sending the blogs as JSON
+    } catch (err) {
+      res.status(500).json({message: "Server Error", error: err.message}); // Error handling
     }
 });
 
@@ -21,12 +32,13 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
             name: req.body.name,
             description: req.body.description,
             owner: req.user._id, // Set the owner to the logged-in user
-            status: req.body.status,
-            links: {
-                url: req.body.linkUrl,
-                description: req.body.linkDescription,
-            },
             image: req.body.image,
+            code:req.body.code,
+            // status: req.body.status,
+            // links: {
+            //     url: req.body.linkUrl,
+            //     description: req.body.linkDescription,
+            // },
         });
 
         const newProject = await project.save(); // Save the new project
@@ -56,12 +68,30 @@ router.put('/:id', [passport.authenticate('jwt', { session: false }), ensureAuth
     }
 });
 
-// Delete a project by ID (JWT-based authentication and ensure it's the author's project)
-router.delete('/:id', [passport.authenticate('jwt', { session: false }), ensureAuthor(Project)], async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
-        await req.item.remove(); // Remove the project
+      const project = await Project.findById(req.params.id).populate('owner');
+      if (!project) {
+        return res.status(404).json({ message: "Project not found" });
+      }
+      res.json(project); // Return the Project if found
+    } catch (err) {
+      res.status(500).json({ message: "Server error", error: err.message });
+    }
+  });
+
+
+// DELETE a project by ID
+router.delete('/:id',passport.authenticate('jwt', { session: false }), ensureAuthor(Project), async (req, res) => {
+    try {
+        const projectId = req.params.id;
+
+        // Delete the project
+        await Project.deleteOne({ _id: projectId });
+
         res.json({ message: 'Project deleted successfully' });
     } catch (error) {
+        console.error("Error deleting project:", error);
         res.status(500).json({ message: 'Error deleting project', error: error.message });
     }
 });

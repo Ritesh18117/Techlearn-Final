@@ -2,7 +2,6 @@ const ensureAuthor = (model) => {
     return async (req, res, next) => {
       try {
         const item = await model.findById(req.params.id);
-  
         if (!item) {
           return res.status(404).json({ message: 'Item not found.' });
         }

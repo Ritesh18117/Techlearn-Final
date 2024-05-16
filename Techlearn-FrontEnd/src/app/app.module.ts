@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module'; // Correct import path
 // Import RouterModule
 import { RouterModule } from '@angular/router';
 import { UserService } from './Services/user.service';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -15,6 +18,8 @@ import { UserService } from './Services/user.service';
     BrowserModule,
     AppRoutingModule, // Include your routing module
     RouterModule, // Correct import
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [UserService]
   // bootstrap: [AppComponent], // Define the bootstrap component

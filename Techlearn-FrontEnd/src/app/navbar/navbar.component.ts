@@ -20,7 +20,6 @@ export class NavbarComponent {
   ngOnInit(){
     if(localStorage.getItem('authToken')){
       this.isLoggedIn = true;
-      console.log(this.isLoggedIn);
     } else{
       this.isLoggedIn = false;
     }
@@ -29,7 +28,6 @@ export class NavbarComponent {
   logout(){
     this.userService.logout().subscribe(
       (response) =>{
-        console.log(response);
         localStorage.clear();
         this.ngOnInit();
       }, (error) =>{

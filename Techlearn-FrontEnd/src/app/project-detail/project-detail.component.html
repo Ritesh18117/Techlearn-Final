@@ -1,0 +1,11 @@
+<div class="container">
+    <h1 class="text-center my-3">{{ project.name }}</h1>
+    <div class="d-flex justify-content-center">
+        <img class="img-fluid border" [src]="project.image" alt="Project Image">
+    </div>
+    <div class="my-5 text-justify" [innerHTML]="project.description"></div>
+    <div class="my-5 text-justify border" [innerHTML]="project.code"></div>
+    <div class="author m-5">
+        ~ {{ project.owner.name }}
+    </div>
+</div>

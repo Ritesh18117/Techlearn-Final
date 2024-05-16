@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap } from 'rxjs';
 
@@ -33,20 +33,23 @@ export class UserService {
 
   // Get the current user's profile
   getProfile(): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`);
     return this.http
-      .get(`${this.baseUrl}/me`)
+      .get(`${this.baseUrl}/profile`, {headers})
       .pipe(catchError(this.handleError));
   }
 
   isLoggedIn(): boolean {
-    // Check for an active session or token
     return !!localStorage.getItem('authToken'); // Example: check if there's a stored user
   }
 
   // Update the user profile
-  updateProfile(userId:any, updateData:any): Observable<any> {
+  updateProfile(updateData:any): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`);
     return this.http
-      .put(`${this.baseUrl}/profile/${userId}`, updateData)
+      .put(`${this.baseUrl}/profile`, updateData, { headers })
       .pipe(catchError(this.handleError));
   }
 

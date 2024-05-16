@@ -3,9 +3,9 @@ const ensureOwnProfile = (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({ message: "Not authenticated" });
     }
-  
+    
     // Compare the user ID from JWT with the ID in the request parameters
-    if (req.params.id === req.user._id.toString()) {
+    if (req.params.id.toString() === req.user._id.toString()) {
       return next(); // Authorized: proceed with the request
     }
   

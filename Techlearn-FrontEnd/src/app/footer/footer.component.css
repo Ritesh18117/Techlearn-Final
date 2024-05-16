@@ -38,11 +38,11 @@ li {
 }
 .site-footer a
 {
-  color:#737373;
+  color:rgb(245, 243, 243);
 }
 .site-footer a:hover
 {
-  color:#3366cc;
+  color:#2AA99E;
   text-decoration:none;
 }
 .footer-links

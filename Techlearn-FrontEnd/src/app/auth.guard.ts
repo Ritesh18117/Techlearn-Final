@@ -45,6 +45,16 @@ export const authGuard: CanActivateFn = (route, state) => {
       return true;
     }
   }
+
+  if(url === '/edit/**'){
+    if(!localStorage.getItem('authToken')){
+      _router.navigate(['/']);
+      return false;
+    }else{
+      return true;
+    }
+  }
+  
   // For Login User
   if(localStorage.getItem('authToken')){
     return true;

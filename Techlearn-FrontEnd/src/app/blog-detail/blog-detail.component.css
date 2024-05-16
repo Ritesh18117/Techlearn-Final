@@ -1,0 +1,31 @@
+@media (max-width: 768px) {
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+    .text-justify {
+        text-align: left;
+    }
+}
+
+.author{
+    font-size: 22px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+h1{
+    font-size: xxx-large;
+}
+
+.text-justify {
+    white-space: pre-wrap; /* Maintain white-space and wrap as needed */
+}
+
+/* Optional: Add additional styling for div to match pre tag */
+.text-justify {
+    font-size: 18px;
+    font-family: "Jost", sans-serif; /* Use monospace font for consistent spacing */
+    padding: 1em; /* Add padding to mimic pre tag */
+    /* border: 1px solid #ccc; */
+}

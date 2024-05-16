@@ -1,0 +1,27 @@
+<div class="container border">
+    <h2 class="border-bottom p-3">Edit Project</h2>
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label form-control-lg">Project Name</label>
+            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput2"
+                placeholder="Project Name" formControlName="name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label form-control-lg">Add Image URL</label> <br>
+            <img [src]="projectForm.get('image')?.value" style="height: 400px; width: 400px;" alt="" class="m-3">
+            <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                placeholder="http://example.com/image.jpg" formControlName="image">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label form-control-lg">Write Description</label>
+            <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"
+               formControlName="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea2" class="form-label form-control-lg">Paste Your Code</label>
+            <textarea class="form-control form-control-lg" id="exampleFormControlTextarea2" rows="10"
+               formControlName="code"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary m-3">Submit</button>
+    </form>
+</div>

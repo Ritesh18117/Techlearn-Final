@@ -1,83 +1,17 @@
 <h2 class="border-bottom p-3">My Blogs</h2>
 <div class="d-flex flex-wrap">
-    <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
+  <ng-container *ngFor="let project of projects">
+    <div class="card m-3" style="width: 18rem;">
+        <img class="card-img-top" src="{{project.image}}" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">{{project.name}}</h5>
+          <p class="card-text">{{project.description.split('. ')[0]}}</p>
+          <ng-container *ngIf="project.link">
+            <a [href]="project.link.url" class="btn btn-sm btn-outline-success m-2">Github</a>
+          </ng-container>
+          <button href="" (click)="delete(project._id)" class="btn btn-sm btn-outline-danger m-2">Delete</button>
+          <button [routerLink]="['/project/edit', project._id]" class="btn btn-outline-secondary btn-sm">Edit</button>
         </div>
       </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="../../../assets/project image.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+    </ng-container>
 </div>

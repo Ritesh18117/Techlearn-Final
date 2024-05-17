@@ -94,7 +94,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/projects', projectRoutes);
 
 app.get('/', (req,res) =>{
-  res.send("Hello TechLearn");
+  res.json({Messgae:"Hello TechLearn"});
 })
 
 // Start the server

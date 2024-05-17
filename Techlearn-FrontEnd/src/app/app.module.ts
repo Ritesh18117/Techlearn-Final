@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './Services/user.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [UserService]
+  providers: [UserService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
   // bootstrap: [AppComponent], // Define the bootstrap component
 })
 export class AppModule {}

@@ -7,7 +7,7 @@ import { Observable, catchError, tap } from 'rxjs';
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:3000/api/users';
+  private baseUrl = 'https://techlearn-backend.vercel.app/api/users';
 
   constructor(private http: HttpClient) { }
 

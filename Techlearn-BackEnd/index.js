@@ -93,6 +93,10 @@ app.use('/api/users', userRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/projects', projectRoutes);
 
+app.get('/', (req,res) =>{
+  res.send("Hello TechLearn");
+})
+
 // Start the server
 const port = 3000;
 app.listen(port, () => {

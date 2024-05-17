@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProjectService {
 
-  private baseUrl = 'https://techlearn-backend.vercel.app/api/projects';
+  private baseUrl = 'http://localhost:3000/api/projects';
 
   constructor(private http: HttpClient) { }
 

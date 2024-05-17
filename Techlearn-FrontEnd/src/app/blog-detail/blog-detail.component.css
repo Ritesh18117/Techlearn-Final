@@ -9,7 +9,7 @@
 }
 
 .author{
-    font-size: 22px;
+    font-size: 24px;
     display: flex;
     flex-direction: row-reverse;
 }
@@ -24,7 +24,7 @@ h1{
 
 /* Optional: Add additional styling for div to match pre tag */
 .text-justify {
-    font-size: 18px;
+    font-size: 22px;
     font-family: "Jost", sans-serif; /* Use monospace font for consistent spacing */
     padding: 1em; /* Add padding to mimic pre tag */
     /* border: 1px solid #ccc; */

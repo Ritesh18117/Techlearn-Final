@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
-const ensureOwnProfile = require('../Middleware/ensureOwnProfile');
+const SECRET_KEY = process.env.SECRET_KEY || 'yourSecretKey';
 
 
 // Register a new user
@@ -23,20 +23,26 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'Password and confirm password must be the same!' });
     }
 
-    // Create a new user
+
+    // if (!isValidPassword(password)) {
+    //   return res.status(400).json({ message: 'Password must be strong!' });
+    // }
+
     const newUser = new User({
       email,
       password,
     });
 
+    // Save the new user
     await newUser.save(); // Password is hashed before saving
     res.status(201).json({ message: 'User registered successfully' });
   } catch (err) {
+    console.log('Error');
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 });
 
-const SECRET_KEY = process.env.SECRET_KEY || 'yourSecretKey';
+
 
 // Login and generate a JWT
 router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {

@@ -1,3 +1,7 @@
+if(process.env.NODE_NEV !== "production"){
+    require('dotenv').config();
+} 
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -18,10 +22,9 @@ app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/TechLearn', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+
+DB_URL = process.env.DB_URL  || 'mongodb://localhost:27017/TechLearn';
+mongoose.connect(DB_URL)
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -33,7 +36,7 @@ mongoose.connect('mongodb://localhost:27017/TechLearn', {
 app.use(passport.initialize());
 
 // JWT strategy for Passport
-const SECRET_KEY = process.env.SECRET_KEY || 'yourSecretKey';
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // Extract token from Authorization header
@@ -91,7 +94,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/projects', projectRoutes);
 
 // Start the server
-const port = process.env.PORT || 3000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

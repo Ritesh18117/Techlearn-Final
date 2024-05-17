@@ -100,7 +100,6 @@ app.get('/', (req,res) =>{
 app.get('/api', (req,res) =>{
   res.json({Messgae:"Hello TechLearn API"});
 })
-
 // Start the server
 const port = 3000;
 app.listen(port, () => {
